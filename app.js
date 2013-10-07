@@ -28,6 +28,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+app.get('/health', function (req, res) {
+  res.send(200,"We good.");
+});
 app.post('/images/new', user.upload);
 app.get('/images/view/:id/:size', user.view);
 
