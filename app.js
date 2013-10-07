@@ -31,9 +31,7 @@ app.get('/health', function (req, res) {
   res.send(200,"We good.");
 });
 
-var images = require('./routes/images');
-app.post('/images/new', images.upload);
-app.get('/images/view/:id/:size', images.view);
+require('./routes')(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
