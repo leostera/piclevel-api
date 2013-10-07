@@ -4,7 +4,6 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 
@@ -31,8 +30,10 @@ if ('development' == app.get('env')) {
 app.get('/health', function (req, res) {
   res.send(200,"We good.");
 });
-app.post('/images/new', user.upload);
-app.get('/images/view/:id/:size', user.view);
+
+var images = require('./routes/images');
+app.post('/images/new', images.upload);
+app.get('/images/view/:id/:size', images.view);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
