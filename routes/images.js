@@ -2,6 +2,8 @@ module.exports = function (app) {
   var mongoose = require('mongoose');
   var amazonS3 = require('awssum-amazon-s3');
 
+  var Image = require('../models/image');
+
   var s3 = new amazonS3.S3({
     'accessKeyId'     : app.get('s3').key,
     'secretAccessKey' : app.get('s3').secret,
@@ -18,9 +20,20 @@ module.exports = function (app) {
         res.json(500, {message: "/view requries an id."});
       } else {
         // increment counters
-        // return url of the image
-        // 
-        res.json(200, {name: req.params.id, size: req.params.size});
+        Image.findOne({hash: req.params.id}, function (error, img) {
+          if(error || !img) {
+            res.json(500, {message: "Image not found", hash: req.params.id});
+          } else {
+            img.totalCount = img.totalCount+1;
+            img.save();
+            // s3.list
+            // if !regex img.hash_req.params.size 
+            //    create img
+            //    s3.put
+            // return img
+            res.json(200, img);
+          }
+        })
       }
     },
 

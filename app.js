@@ -4,8 +4,11 @@
  */
 
 var express = require('express');
+var mongoose = require('mongoose');
 var http = require('http');
 var path = require('path');
+
+mongoose.connect('mongodb://localhost/imglemon');
 
 var app = express();
 
