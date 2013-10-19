@@ -1,0 +1,12 @@
+{
+  "name": "piclevel-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~3.3.5",
+    "mongoose": "~3.6.20"
+  }
+}
