@@ -3,27 +3,29 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var mongoose = require('mongoose');
-var http = require('http');
-var path = require('path');
-
-mongoose.connect('mongodb://localhost/imglemon');
+var http = require('http')
+  , express = require('express');
 
 var app = express();
 
+var config = require('./config');
+
+
 // all environments
-app.set('port', 8080);
-app.set('s3', {
-  key: "AKIAIOT26IBLBQQII4AA",
-  secret: "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",
-  bucket: "imglemon-storage"
-});
+app.set('port', config.port);
+app.set('config', config);
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(app.router);
+
+// var payments = require('./lib/payments')
+var pictures = require('./lib/pictures')
+  , users = require('./lib/users');
+
+app.use(users);
+app.use(pictures);
+app.use(payments);
 
 // development only
 if ('development' == app.get('env')) {
@@ -34,7 +36,9 @@ app.get('/health', function (req, res) {
   res.send(200,"We good.");
 });
 
-require('./routes')(app);
+app.all('*', function (req, res) {
+  res.json(500, {message: "Please use a valid endpoint. Thank you :)"});
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

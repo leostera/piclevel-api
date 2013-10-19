@@ -1,4 +1,16 @@
 {
+  "name": "piclevel-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.3.5"
+  }
+}
+
+{
   "name": "application-name",
   "version": "0.0.1",
   "private": true,
@@ -14,6 +26,7 @@
     "geoip": "~0.4.10",
     "connect-redis": "~1.4.5",
     "passport-local": "~0.1.6",
-    "passport": "~0.1.17"
+    "passport": "~0.1.17",
+    "nconf": "~0.6.7"
   }
 }
