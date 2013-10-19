@@ -1,0 +1,51 @@
+{
+  "server": {
+    "port": 8080,
+    "appUrl": "piclevel.com",
+    "apiUrl": "api.piclevel.com"
+  },
+
+  "sockets": {
+    "store": {
+      "host": "",
+      "port": 6379,
+      "key": ""
+    }
+  },
+
+  "aws": {
+    "accessKeyId": "",
+    "secretAccessKey": "",
+    "region": "",
+    "awsAccountId": "",
+    "queuePrefix": "",
+    "alarmPrefix": ""
+  },
+
+  "auth": {
+    "local": {
+      "salt": ""
+    }
+  },
+
+  "db": {
+    "host": "",
+    "port": "",
+    "user": "",
+    "password": "",
+    "dbname": ""
+  },
+
+  "session": {
+    "secret": "",
+    "store": {
+      "host": "",
+      "port": 6379,
+      "prefix": {
+        "text": "pl_",
+        "useEnv": true
+      },
+      "key": ""
+    }
+  }
+}
