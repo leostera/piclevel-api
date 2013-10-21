@@ -5,21 +5,18 @@
     "apiUrl": "api.piclevel.com"
   },
 
-  "sockets": {
-    "store": {
-      "host": "",
-      "port": 6379,
-      "key": ""
-    }
-  },
-
   "aws": {
-    "accessKeyId": "",
-    "secretAccessKey": "",
+    "ec2": {
+      "accessKeyId": "",
+      "secretAccessKey": ""
+    },
+    "s3": {
+      "accessKeyId": "",
+      "secretAccessKey": "",
+      "bucket": ""
+    },
     "region": "",
-    "awsAccountId": "",
-    "queuePrefix": "",
-    "alarmPrefix": ""
+    "awsAccountId": ""
   },
 
   "auth": {
