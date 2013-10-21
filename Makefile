@@ -1,5 +1,4 @@
-MODULES=$(ls -1 ./lib)
-DO=for d in $(MODULES); do echo "cd ./lib/; npm i; cd ../..;"; done;
+MODULES=pictures users utils
 
 all: npm
 

@@ -10,22 +10,15 @@ var app = express();
 
 var config = require('./config');
 
-
 // all environments
-app.set('port', config.port);
-app.set('config', config);
-app.use(express.favicon());
+app.set('port', config.server.port);
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
 
-// var payments = require('./lib/payments')
 var pictures = require('./lib/pictures')
   , users = require('./lib/users');
 
 app.use(users);
 app.use(pictures);
-app.use(payments);
 
 // development only
 if ('development' == app.get('env')) {
